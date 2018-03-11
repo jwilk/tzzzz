@@ -1,0 +1,10 @@
+.. code:: console
+
+   $ echo America/New_York Europe/Warsaw Australia/Perth > ~/.config/tzzzz/config 
+
+   $ tzzzz 
+   15:03 America/New_York
+   20:03 Europe/Warsaw
+   03:03 Australia/Perth
+
+.. vim:ft=rst ts=3 sts=3 sw=3 et
