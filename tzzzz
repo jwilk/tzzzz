@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e -u
+
+conffile=${XDG_CONFIG_HOME-$HOME/.config}/tzzzz/config
+conf=$(cat "$conffile")
+set -- $conf
+xargs -n1 <<EOF | xargs -I{} env TZ={} date '+%R {}'
+$conf
+EOF
+
+# vim:ts=4 sts=4 sw=4 et
