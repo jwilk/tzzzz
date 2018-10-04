@@ -1,5 +1,7 @@
 .. code:: console
 
+   $ mkdir -m 700 -p ~/.config/tzzzz
+
    $ echo America/New_York Europe/Warsaw Australia/Perth > ~/.config/tzzzz/config
 
    $ tzzzz
