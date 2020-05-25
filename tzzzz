@@ -5,9 +5,33 @@
 
 set -e -u
 
+usage() {
+    printf 'Usage: %s [-d]\n' "${0##*/}"
+}
+
+fmt='%R'
+while getopts 'dh' opt
+do
+    case $opt in
+        h)
+            usage
+            exit 0;;
+        d)
+            fmt='%F %R';;
+        *)
+            exit 1;;
+    esac
+done
+shift $((OPTIND - 1))
+if [ $# -ne 0 ]
+then
+    usage >&2
+    exit 1
+fi
+
 conffile=${XDG_CONFIG_HOME-$HOME/.config}/tzzzz/config
 conf=$(cat "$conffile")
-xargs -n1 <<EOF | xargs -I{} env TZ={} date '+%R {}'
+xargs -n1 <<EOF | xargs -I{} env TZ={} date "+$fmt {}"
 $conf
 EOF
 
