@@ -29,7 +29,7 @@ then
     exit 1
 fi
 
-conffile=${XDG_CONFIG_HOME-$HOME/.config}/tzzzz/config
+conffile=${XDG_CONFIG_HOME:-$HOME/.config}/tzzzz/config
 conf=$(cat "$conffile")
 xargs -n1 <<EOF | xargs -I{} env TZ={} date "+$fmt {}"
 $conf
